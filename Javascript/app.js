@@ -1,4 +1,4 @@
-const url = 'https://jsonplaceholder.typicode.com/comments';
+const url = 'https://jsonplaceholder.typicode.com/comments?_page=1&_limit=10';
 fetch(url)
   .then(response => response.json())
   .then(data => {
@@ -47,6 +47,7 @@ fetch(url)
       cell6.style.padding = '10px';
       table.appendChild(row);
     });
+    pagination();
   });
 
 function showPostComments() {
@@ -62,10 +63,7 @@ function showPostComments() {
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Comments</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <h2 class="modal-title" id="exampleModalLongTitle">Comments</h2>
           </div>
           <div class="modal-body">
           ${data.map(element => {
@@ -83,5 +81,26 @@ function showPostComments() {
       </div>
     </div>`;
       document.getElementById('modal').innerHTML = output;
+    });
+}
+
+function pagination() {
+  var url = 'https://jsonplaceholder.typicode.com/comments?_page=1&_limit=10';
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      var output = '';
+      output += `<div class="container">
+  <ul class="pagination ">
+      <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="https://jsonplaceholder.typicode.com/comments?_page=${1}&_limit=10">1</a></li>
+      <li class="page-item"><a class="page-link" href="https://jsonplaceholder.typicode.com/comments?_page=${2}&_limit=10">2</a></li>
+      <li class="page-item"><a class="page-link" href="https://jsonplaceholder.typicode.com/comments?_page=3&_limit=10">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a>
+      </li>
+  </ul>
+</div>`;
+      document.getElementById('pagination').innerHTML = output;
     });
 }
