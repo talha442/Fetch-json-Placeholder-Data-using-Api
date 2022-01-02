@@ -1,4 +1,4 @@
-const url = 'https://jsonplaceholder.typicode.com/comments?_page=1&_limit=10';
+const url = 'https://jsonplaceholder.typicode.com/comments';
 fetch(url)
   .then(response => response.json())
   .then(data => {
@@ -47,7 +47,7 @@ fetch(url)
       cell6.style.padding = '10px';
       table.appendChild(row);
     });
-    pagination();
+    // pagination();
   });
 
 function showPostComments() {
@@ -84,23 +84,23 @@ function showPostComments() {
     });
 }
 
-function pagination() {
-  var url = 'https://jsonplaceholder.typicode.com/comments?_page=1&_limit=10';
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      var output = '';
-      output += `<div class="container">
-  <ul class="pagination ">
-      <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
-      <li class="page-item"><a class="page-link" href="https://jsonplaceholder.typicode.com/comments?_page=${1}&_limit=10">1</a></li>
-      <li class="page-item"><a class="page-link" href="https://jsonplaceholder.typicode.com/comments?_page=${2}&_limit=10">2</a></li>
-      <li class="page-item"><a class="page-link" href="https://jsonplaceholder.typicode.com/comments?_page=3&_limit=10">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">Next</a>
-      </li>
-  </ul>
-</div>`;
-      document.getElementById('pagination').innerHTML = output;
-    });
-}
+// function pagination() {
+//   var url = 'https://jsonplaceholder.typicode.com/comments?_page=1&_limit=10';
+//   fetch(url)
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log(data);
+//       var output = '';
+//       output += `<div class="container">
+//   <ul class="pagination ">
+//       <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+//       <li class="page-item"><a class="page-link" href="https://jsonplaceholder.typicode.com/comments?_page=${1}&_limit=10">1</a></li>
+//       <li class="page-item"><a class="page-link" href="https://jsonplaceholder.typicode.com/comments?_page=${2}&_limit=10">2</a></li>
+//       <li class="page-item"><a class="page-link" href="https://jsonplaceholder.typicode.com/comments?_page=3&_limit=10">3</a></li>
+//       <li class="page-item"><a class="page-link" href="#">Next</a>
+//       </li>
+//   </ul>
+// </div>`;
+//       document.getElementById('pagination').innerHTML = output;
+//     });
+// }
